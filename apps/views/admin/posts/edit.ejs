@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include ../layouts/head %>
+  <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
+  <script>
+      tinymce.init({
+        selector: 'textarea'
+    });
+</script>
+</head>
+<body>
+	<header>
+		<%- include ../layouts/navbar %>
+	</header>
+	<main>
+		<div class="panel panel-default">
+            <div class="panel-heading">
+                Edit Post
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <form role="form" method="" action=""  >
+                            <div id="signupalert" style="<%if (!data || !data.error ){%>display:none<%}%>" class="alert alert-danger">
+                                <% if (data && data.error){%>
+                                <span><%= data.error %></span>
+                                <% } %>
+                            </div>
+                            <input class="form-control id" name="id" value="<% if (data && data.post) { %><%= data.post.id %> <% } %>" placeholder="Enter Title..." type="hidden">
+                            <div class="form-group">
+                                <label>Title </label>
+                                <input class="form-control title" name="title" value="<% if (data && data.post) { %><%= data.post.title %> <% } %>" placeholder="Enter Title...">
+                            </div>
+                            <div class="form-group">
+                                <label>Content</label>
+                                <textarea class="form-control content"   name="content" rows="4"><%if (data && data.post) {%><%= data.post.content %> <% } %></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Author </label>
+                                <input class="form-control author" value="<%if (data && data.post) { %><%= data.post.author %> <% } %>"  name="author" placeholder="Enter Author...">
+                            </div>
+                            <button type="button"  class="btn btn-default btn-primary post_edit">Edit Button</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+    <script src="/static/js/postedit.js" ></script>
+</body>
+</html>

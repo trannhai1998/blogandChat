@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include ../layouts/head %>
+  <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
+  <script>
+      tinymce.init({
+        selector: 'textarea'
+    });
+</script>
+</head>
+<body>
+	<header>
+		<%- include ../layouts/navbar %>
+	</header>
+	<main>
+		<div class="panel panel-default">
+            <div class="panel-heading">
+                Add New Post
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <form role="form" method="post" action="/admin/post/new">
+                            <div id="signupalert" style="<%if (!data || !data.error ){%>display:none<%}%>" class="alert alert-danger">
+                                <%if (data && data.error){%>
+                                <span><%= data.error %></span>
+                                <%}%>
+                            </div>
+                            <div class="form-group">
+                                <label>Title </label>
+                                <input class="form-control" name="title" placeholder="Enter Title...">
+                            </div>
+                            <div class="form-group">
+                                <label>Content</label>
+                                <textarea class="form-control" name="content" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Author </label>
+                                <input class="form-control" name="author" placeholder="Enter Author...">
+                            </div>
+                            <button type="submit" class="btn btn-default btn-primary">Add Post</button>
+                            <button type="reset" class="btn btn-default btn-danger">Reset Button</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>

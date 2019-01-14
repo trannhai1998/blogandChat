@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<%- include ../layouts/head %>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,charset="UTF-8" ">
+	<title></title>
+	<link rel="stylesheet" href="" type="text/css" />
+	<script language="javascript" src="">
+
+	</script>
+</head>
+<body>
+	<header>
+	<%- include ../layouts/navbar %>
+	</header>
+	<main>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            POSTS     
+              <a href="/admin/post/new" style="margin-left: 10px;" class="btn btn-success"> Add New Post</a> 
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>email</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (data && data.user) { %>
+                            <% for(var i=0 ; i < data.user.length ; i++){ %>
+                        <tr>
+                            <td><%= data.user[i].id %></td>
+                            <td><%= data.user[i].email %></td>
+                            <td><%= data.user[i].first_name %></td>
+                            <td><%= data.user[i].last_name %></td>
+                        </tr>
+                            <% } %>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        <!-- /.panel-body -->
+    </div>
+</div>
+	</main>
+
+</body>
+</html>
